@@ -11,8 +11,5 @@ import { IFavoriteChangedEventArgs } from './favorite/favorite.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
- tweet = {
-   likesCount: 10,
-  isLiked: true
- };
+viewMode = 'map';
 }
