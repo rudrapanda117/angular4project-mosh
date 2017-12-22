@@ -6,19 +6,7 @@ import { Component, OnInit , Input, Output, EventEmitter, ViewEncapsulation} fro
   selector: 'app-favorite',
   templateUrl: './favorite.component.html',
   styleUrls: ['./favorite.component.css'],
-  // styles: [
-  //   `
-  //   .glyphicon {
-  //     color: green;
-
-  //     .gliphicon {
-  //       background: black
-  //     }
-  //   }
-  //   `
-  // ],
-  // Last one mention for style over rides
-  encapsulation: ViewEncapsulation.Native
+  encapsulation: ViewEncapsulation.None
 })
 export class FavoriteComponent implements OnInit {
 
