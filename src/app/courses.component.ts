@@ -24,8 +24,14 @@ import {
             <td [attr.colspan]="colSpan" ></td>
         </tr>
     </table>
+    <!-- event bubling -->
+    <div (click)="onSecondDivClicked()">
+    <div (click)="onDivClicked($event);">
+    <button class="btn btn-primary" [style.backgroundColor]="isActive? 'blue' : 'red' " (click)="onSave($event)">Save</button>
+    </div>
+    </div>
 
-    <button class="btn btn-primary" [style.backgroundColor]="isActive? 'blue' : 'red' ">Save</button>
+
     `
 })
 export class CoursesComponent {
@@ -36,6 +42,18 @@ export class CoursesComponent {
   courses;
   colspan = 2;
   isActive = true;
+  onSave($event) {
+      console.log('button was clicked', $event);
+  }
+
+  onDivClicked($event) {
+   // $event.stopPropagation();
+      console.log('First Div clicked');
+  }
+
+  onSecondDivClicked() {
+    console.log('Second Div clicked');
+}
 
   constructor(private coursesService: CoursesService) {
     this.courses = coursesService.getCourses();
