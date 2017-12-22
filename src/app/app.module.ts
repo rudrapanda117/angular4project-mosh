@@ -10,6 +10,7 @@ import { CourseComponent } from './course/course.component';
 import { CoursesService } from './courses.service';
 import { AuthorsComponent } from './authors/authors.component';
 import { AuthorsService } from './authors.service';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AuthorsService } from './authors.service';
     CoursesComponent,
     CourseComponent,
     AuthorsComponent,
-    SumamryPipe
+    SumamryPipe,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,
