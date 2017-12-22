@@ -1,13 +1,1 @@
-<div>
-    <app-favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></app-favorite>
-</div>
-
-<span class="glyphicon glyphicon-asterisk" ></span>
-
-<bootstrap-panel>
-    <ng-container class="heading">Heading</ng-container>
-    <div class="body">
-        <h2>Body</h2>
-        <p>Some content</p>
-    </div>
-</bootstrap-panel>
+<app-like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked"></app-like>

@@ -12,6 +12,7 @@ import { AuthorsComponent } from './authors/authors.component';
 import { AuthorsService } from './authors.service';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { BootstrapPanelComponent } from './bootstrap-panel/bootstrap-panel.component';
+import { LikeComponent } from './like/like.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { BootstrapPanelComponent } from './bootstrap-panel/bootstrap-panel.compo
     AuthorsComponent,
     SumamryPipe,
     FavoriteComponent,
-    BootstrapPanelComponent
+    BootstrapPanelComponent,
+    LikeComponent
   ],
   imports: [
     BrowserModule,
