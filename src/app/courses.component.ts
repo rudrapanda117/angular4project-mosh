@@ -31,7 +31,10 @@ import {
     </div>
     </div>
 
+    <!-- event filtering -->
+    <input (keyup)="onKeyUp($event)"/>
 
+    <input (keyup.enter)="onKeyUpEnter()"/>
     `
 })
 export class CoursesComponent {
@@ -43,17 +46,31 @@ export class CoursesComponent {
   colspan = 2;
   isActive = true;
   onSave($event) {
-      console.log('button was clicked', $event);
+    console.log('button was clicked', $event);
   }
 
   onDivClicked($event) {
-   // $event.stopPropagation();
-      console.log('First Div clicked');
+    // $event.stopPropagation();
+    console.log('First Div clicked');
   }
 
   onSecondDivClicked() {
     console.log('Second Div clicked');
-}
+  }
+
+  onKeyUp($event) {
+    if ($event.keyCode === 13) {
+      console.log('Enter was pressed');
+    }
+
+  }
+
+  onKeyUpEnter() {
+
+      console.log('Enter was pressed');
+
+
+  }
 
   constructor(private coursesService: CoursesService) {
     this.courses = coursesService.getCourses();
