@@ -10,12 +10,16 @@ import { Component } from '@angular/core';
     <ul>
     <li *ngFor="let course of courses">{{ course }}</li>
     </ul>
+    <h2 >{{ stringInterPolation }}</h2>
     <img src="{{ imageUrl }}"/>
+    <h2 [textContent]="propertyBinding"></h2>
+    <img [src]="imageUrl" />
     `
 })
 export class CoursesComponent {
-
-    title = 'List of courses';
+    propertyBinding = ' Displaying image by Property Binding';
+    stringInterPolation = 'Displaying image by String Interpolation';
+        title = 'List of courses';
     imageUrl = 'http://lorempixel.com/400/200';
     courses;
 
