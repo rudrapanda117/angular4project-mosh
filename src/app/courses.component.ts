@@ -25,7 +25,7 @@ import {
         </tr>
     </table>
 
-    <button class="btn btn-primary" [class.active]="isActive">Save</button>
+    <button class="btn btn-primary" [style.backgroundColor]="isActive? 'blue' : 'red' ">Save</button>
     `
 })
 export class CoursesComponent {
@@ -35,7 +35,7 @@ export class CoursesComponent {
   imageUrl = 'http://lorempixel.com/400/200';
   courses;
   colspan = 2;
-  isActive = false;
+  isActive = true;
 
   constructor(private coursesService: CoursesService) {
     this.courses = coursesService.getCourses();
