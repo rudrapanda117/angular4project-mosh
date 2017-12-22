@@ -10,21 +10,23 @@ import {
 @Component({
   selector: 'app-courses',
   template: `
-    <!-- two way binding -->
-    <input [value]="email" (keyup.enter)="email = $event.target.value; ontwbEnter()" />
-
-    <input [(ngModel)]="email" (keyup.enter)="ontwbEnter()" />
+    {{ course.title | uppercase | lowercase }} <br/>
+    {{ course.students | number }} <br/>
+    {{ course.rating | number:'2.1-1' }} <br/>
+    {{ course.price | currency:'AUD':'symbol':'3.2-2' }} <br/>
+    {{ course.releaseDate | date:'shortDate' }} <br/>
 
     `
 })
 export class CoursesComponent {
 
-  email = 'a@b.com';
-
-
-ontwbEnter() {
-    console.log('email value', this.email);
-}
+  course = {
+    title: ' The Complete Angular Course',
+    rating: 4.9745,
+    students: 30123,
+    price: 190.95,
+    releaseDate: new Date()
+  };
 
   constructor(private coursesService: CoursesService) {
 
