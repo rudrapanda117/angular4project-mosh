@@ -35,6 +35,12 @@ import {
     <input (keyup)="onKeyUp($event)"/>
 
     <input (keyup.enter)="onKeyUpEnter()"/>
+
+    <!-- template variable -->
+    <input (keyup.enter)="onKeyUpEnterValue($event)"/>
+
+    <input #templateVariable (keyup.enter)="onKeyUpEnterTemplateVariable(templateVariable.value)"/>
+
     `
 })
 export class CoursesComponent {
@@ -71,6 +77,20 @@ export class CoursesComponent {
 
 
   }
+
+  onKeyUpEnterValue($event) {
+
+    console.log('Enter was pressed', $event.target.value);
+
+
+}
+
+onKeyUpEnterTemplateVariable(value) {
+
+    console.log('Enter was pressed', value);
+
+
+}
 
   constructor(private coursesService: CoursesService) {
     this.courses = coursesService.getCourses();
