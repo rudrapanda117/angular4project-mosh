@@ -11,6 +11,7 @@ import { CoursesService } from './courses.service';
 import { AuthorsComponent } from './authors/authors.component';
 import { AuthorsService } from './authors.service';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { BootstrapPanelComponent } from './bootstrap-panel/bootstrap-panel.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
     CourseComponent,
     AuthorsComponent,
     SumamryPipe,
-    FavoriteComponent
+    FavoriteComponent,
+    BootstrapPanelComponent
   ],
   imports: [
     BrowserModule,
