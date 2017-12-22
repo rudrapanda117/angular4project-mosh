@@ -10,23 +10,14 @@ import {
 @Component({
   selector: 'app-courses',
   template: `
-    {{ course.title | uppercase | lowercase }} <br/>
-    {{ course.students | number }} <br/>
-    {{ course.rating | number:'2.1-1' }} <br/>
-    {{ course.price | currency:'AUD':'symbol':'3.2-2' }} <br/>
-    {{ course.releaseDate | date:'shortDate' }} <br/>
-
+            {{ text | summary:10:'1212121212' }}
     `
 })
 export class CoursesComponent {
 
-  course = {
-    title: ' The Complete Angular Course',
-    rating: 4.9745,
-    students: 30123,
-    price: 190.95,
-    releaseDate: new Date()
-  };
+  text = `
+ lOajbdjf iugfhds gdfidhsuf duhfud fiudiufsd fdsiuf diufdusfiuyew hasdufsdiufiusd fdf uyhfueyf iuaiufd uaguf8duf ufduf dfudfud
+ `;
 
   constructor(private coursesService: CoursesService) {
 
