@@ -1,0 +1,14 @@
+<form>
+  <div class="form-group">
+    <label for="forstName">First Name</label>
+    <input required ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" type="text" id="firstName" class="form-control">
+    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">First Name is Required</div>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea  id="comment" cols="30" rows="10" class="form-control"></textarea>
+  </div>
+
+  <button class="btn btn-primary">Submit</button>
+</form>
