@@ -1,10 +1,1 @@
-<button (click)="onAdd()">Add</button>
-
-
-<ul>
-    <li *ngFor="let course of courses">
-        {{ course.name }}
-        <button (click)="onRemove(course)">Remove</button>
-        <button (click)="onUpdate(course)">Update</button>
-    </li>
-</ul>
+<input type="text"  appInputFormat [format]="uppercase">
