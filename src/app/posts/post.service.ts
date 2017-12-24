@@ -4,6 +4,7 @@ import { AppError } from './../common/app-error';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -19,7 +20,7 @@ export class PostService {
      return this.http.post(this.url, JSON.stringify(post))
      .catch((error: Response) => {
        if (error.status === 400) {
-          return Observable.throw(new BadInput(error.json));
+          return Observable.throw(new BadInput(error.json()));
         } else {
           return Observable.throw(new AppError(error.json()));
         }
@@ -34,9 +35,9 @@ export class PostService {
     return this.http.delete(this.url + '/' + postID)
     .catch((error: Response) => {
       if (error.status === 404) {
-        Observable.throw(new NotFoundError(error));
-      }else {
-        return Observable.throw(new AppError(error));
+        return Observable.throw(new NotFoundError(error.json()));
+      } else {
+        return Observable.throw(new AppError(error.json()));
       }
     });
   }

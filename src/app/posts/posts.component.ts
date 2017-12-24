@@ -60,15 +60,19 @@ export class PostsComponent implements OnInit {
         response => {
           console.log(response.json());
         },
-        error => {
-          console.log('An unexpected error occured.', error);
+        (error: AppError) => {
+          if (error instanceof BadInput) {
+            console.log('Bad Input');
+          }else {
+            console.log('An unexpected error occured.');
+          }
         });
     //this.http.put(this.url, JSON.stringify(post));
   }
 
   deletePost(post) {
 
-    this.postService.deletePost(post.id)
+    this.postService.deletePost(post.id + 235)
       .subscribe(
         response => {
           console.log(response);
@@ -77,10 +81,9 @@ export class PostsComponent implements OnInit {
         },
          (error: AppError) => {
            if (error instanceof NotFoundError) {
+             console.log('This post is already deleted', error);
              alert('This post is already deleted');
-
            } else {
-            alert('An unexpected error occured.');
             console.log('An unexpected error occured.', error);
            }
         });
