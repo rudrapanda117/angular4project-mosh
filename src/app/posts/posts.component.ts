@@ -31,16 +31,20 @@ export class PostsComponent implements OnInit {
     let post: any = {
       title: input.value
     };
+    this.posts.splice(0, 0, post);
+
     input.value = '';
     console.log('post', post);
+
     this.postService.create(post)
       .subscribe(
         newPost => {
           post.id = newPost.id;
-          this.posts.splice(0, 0, post);
           console.log(post);
         },
         (error: AppError) => {
+          this.posts.splice(0, 1);
+
           if (error instanceof BadInput ) {
             console.log('An unexpected error occured.', error);
           } else {
@@ -61,13 +65,15 @@ export class PostsComponent implements OnInit {
 
   deletePost(post) {
 
+    let index = this.posts.indexOf(post);
+          this.posts.splice(index, 1);
+
     this.postService.delete(post.id)
       .subscribe(
-        () => {
-          let index = this.posts.indexOf(post);
-          this.posts.splice(index, 1);
-        },
+        () => { },
          (error: AppError) => {
+          this.posts.splice(index, 0, post);
+
            if (error instanceof NotFoundError) {
              console.log('This post is already deleted', error);
              alert('This post is already deleted');
