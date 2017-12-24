@@ -18,6 +18,9 @@ import {
   Observable
 } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+
 
 @Component({
   selector: 'app-github-followers',
@@ -47,18 +50,29 @@ export class GithubFollowersComponent implements OnInit {
         this.route.paramMap,
         this.route.queryParamMap
       ])
-      .subscribe(combined => {
+      // .map(combined => {
+      //   let id = combined[0].get('id'); // pathparams
+      //   let page = combined[1].get('page');
+      //   let order = combined[1].get('order');
+
+      //   console.log('Combined Observable:- ', 'id: ', id, 'page: ', page, ' order : ', order);
+
+      //   // Fetch followers
+      //   return this.service.getAll();
+      //   //  .subscribe(followers => this.followers = followers);
+      // })
+      .switchMap(combined => {
         let id = combined[0].get('id'); // pathparams
         let page = combined[1].get('page');
         let order = combined[1].get('order');
 
         console.log('Combined Observable:- ', 'id: ', id, 'page: ', page, ' order : ', order);
-        
-        // Fetch followers
-        this.service.getAll()
-          .subscribe(followers => this.followers = followers);
 
-      });
+        // Fetch followers
+        return this.service.getAll();
+        //  .subscribe(followers => this.followers = followers);
+      })
+      .subscribe(followers => this.followers = followers);
 
   }
 
