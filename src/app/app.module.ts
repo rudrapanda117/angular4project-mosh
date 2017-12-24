@@ -22,6 +22,8 @@ import { InputFormatDirective } from './input-format.directive';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { PostsComponent } from './posts/posts.component';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { GithubFollowersService } from './github-followers/github-followers.service';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { PostsComponent } from './posts/posts.component';
     ZippyComponent,
     ContactFormComponent,
     SignupFormComponent,
-    PostsComponent
+    PostsComponent,
+    GithubFollowersComponent
     ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { PostsComponent } from './posts/posts.component';
     CoursesService,
     AuthorsService,
     PostService,
+    GithubFollowersService,
     {
       provide: ErrorHandler, useClass: AppErrorHandler
     }
