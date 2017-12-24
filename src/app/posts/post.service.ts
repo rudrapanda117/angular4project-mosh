@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PostService {
-  private url = 'https://jsonplaceholder.typicode.com/posts';
+  private url = 'https://ajsonplaceholder.typicode.com/posts';
   constructor(private http: Http) { }
 
   getPosts() {

@@ -26,8 +26,6 @@ export class PostsComponent implements OnInit {
     this.postService.getPosts()
       .subscribe(response => {
         this.posts = response.json();
-      }, error => {
-        console.log('An unexpected error occured.', error);
       });
   }
 
@@ -48,7 +46,7 @@ export class PostsComponent implements OnInit {
           if (error instanceof BadInput ) {
             console.log('An unexpected error occured.', error);
           } else {
-            console.log('An unexpected error occured.', error);
+            throw error;
           }
 
         });
@@ -59,13 +57,6 @@ export class PostsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response.json());
-        },
-        (error: AppError) => {
-          if (error instanceof BadInput) {
-            console.log('Bad Input');
-          }else {
-            console.log('An unexpected error occured.');
-          }
         });
     //this.http.put(this.url, JSON.stringify(post));
   }
@@ -84,7 +75,7 @@ export class PostsComponent implements OnInit {
              console.log('This post is already deleted', error);
              alert('This post is already deleted');
            } else {
-            console.log('An unexpected error occured.', error);
+              throw error;
            }
         });
     //this.http.put(this.url, JSON.stringify(post));
