@@ -17,6 +17,7 @@ export class GithubProfileComponent implements OnInit {
       let id = +params.get('id');
       console.log(id);
     });
+    console.log('GithubProfileComponent oninit');
   }
 
 }
