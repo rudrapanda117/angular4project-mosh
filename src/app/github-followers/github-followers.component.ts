@@ -1,4 +1,7 @@
 import {
+  combineLatest
+} from 'rxjs/operators';
+import {
   Component,
   OnInit
 } from '@angular/core';
@@ -11,6 +14,10 @@ import {
 import {
   log
 } from 'util';
+import {
+  Observable
+} from 'rxjs/Observable';
+import 'rxjs/add/observable/combineLatest';
 
 @Component({
   selector: 'app-github-followers',
@@ -36,8 +43,23 @@ export class GithubFollowersComponent implements OnInit {
         console.log('page: ', page, ' order : ', order);
       });
 
-    this.service.getAll()
-      .subscribe(followers => this.followers = followers);
+    Observable.combineLatest([
+        this.route.paramMap,
+        this.route.queryParamMap
+      ])
+      .subscribe(combined => {
+        let id = combined[0].get('id'); // pathparams
+        let page = combined[1].get('page');
+        let order = combined[1].get('order');
+
+        console.log('Combined Observable:- ', 'id: ', id, 'page: ', page, ' order : ', order);
+        
+        // Fetch followers
+        this.service.getAll()
+          .subscribe(followers => this.followers = followers);
+
+      });
+
   }
 
 }
